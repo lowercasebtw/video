@@ -251,8 +251,11 @@ async function main() {
 		frames.push(new Frame(w, h, data));
 	}
 
-	const video = new Video(frames, fps);
-	setInterval(() => animate(video), (video.length * 1000) + (1 * 1000));
+    while (true) {
+        const video = new Video(frames, fps);
+        animate(video);
+        await sleep((video.length * 1000) + (1 * 1000));
+    }
 }
 
 main();
